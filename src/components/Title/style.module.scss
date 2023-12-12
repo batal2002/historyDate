@@ -1,11 +1,6 @@
-.wrapper {
-  position: relative;
-  padding: 170px 0 56px;
-}
-
 .title {
   position: absolute;
-  top: 170px;
+  top: -45px;
   left: 0;
   display: flex;
   gap: 75px;
@@ -16,5 +11,27 @@
     font-size: 56px;
     font-weight: 700;
     line-height: 120%;
+    @media (max-width: 1024px) {
+      font-size: 35px;
+    }
+    @media (max-width: 768px) {
+      font-size: 20px;
+      position: static;
+    }
+  }
+
+  svg {
+    @media (max-width: 1024px) {
+      gap: 30px;
+      max-height: 75px;
+      width: 100%;
+    }
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    gap: 30px;
   }
 }

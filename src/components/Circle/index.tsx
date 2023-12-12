@@ -1,10 +1,8 @@
-import React, {FC, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState} from 'react';
+import React, {FC, useContext, useEffect, useLayoutEffect, useRef, useState} from 'react';
 import s from './style.module.scss'
 import Dot from "../Dot";
-import {ArticlesContext, CurrentIndexContext, WindowWidthContext} from "../App";
+import {ArticlesContext, CurrentIndexContext} from "../App";
 import {gsap} from "gsap";
-import Date from "../Date";
-import Title from "../Title";
 
 const Circle: FC = () => {
     const [coordinates, setCoordinates] = useState<number[][]>([])
@@ -15,9 +13,9 @@ const Circle: FC = () => {
     let numberOfArticle = articlesData.length; // количество точек
 
     useEffect(() => {
-        if (circle.current && articlesData.length > 0) {
-            let width = circle.current.offsetWidth
-            let r = width / 2; // радиус
+        if (circle.current && articlesData.length > 0 && circle.current.offsetWidth) {
+
+            let r = circle.current.offsetWidth / 2; // радиус
 
             let x: number, y: number;
             const arr: number[][] = []
@@ -28,7 +26,7 @@ const Circle: FC = () => {
             }
             setCoordinates(arr)
         }
-    }, [articlesData])
+    }, [articlesData, circle])
 
     useEffect(() => {
         if (numberOfArticle > 0) {
@@ -46,14 +44,10 @@ const Circle: FC = () => {
     }, [rotationFullDeg])
 
     return (
-        <div className={s.wrapper}>
-            <Title/>
-            <Date/>
-            <div className={s.circle} ref={circle}>
-                {coordinates.length !== 0 && articlesData.map((item, index) =>
-                    <Dot key={item.topic} item={item} index={index} coordinates={coordinates[index]}
-                         rotationDeg={rotationFullDeg}/>)}
-            </div>
+        <div className={s.circle} ref={circle}>
+            {coordinates.length !== 0 && articlesData.map((item, index) =>
+                <Dot key={item.topic} item={item} index={index} coordinates={coordinates[index]}
+                     rotationDeg={rotationFullDeg}/>)}
         </div>
     );
 };

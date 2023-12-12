@@ -1,18 +1,4 @@
-.wrapper {
-  position: relative;
-  padding: 45px 0 0;
-  &:before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    height: 1px;
-    width: 100%;
-    background-color: #42567A;
-    opacity: 0.1;
-  }
-}
+
 .circle {
   position: relative;
   margin: 0 auto;
