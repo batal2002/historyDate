@@ -60,11 +60,21 @@
 
 .pagination {
   position: absolute;
-  bottom: 18px;
+  bottom: 13px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 10px;
+}
+
+.dotWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+
+  &:disabled {
+    opacity: 0.4;
+  }
 }
 
 .dot {
@@ -73,7 +83,5 @@
   border-radius: 50%;
   background-color: #42567A;
 
-  &:disabled {
-    opacity: 0.4;
-  }
+
 }

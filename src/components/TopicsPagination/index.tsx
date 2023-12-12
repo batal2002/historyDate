@@ -49,8 +49,10 @@ const TopicsPagination: FC = () => {
             </div>
             {windowWidth <= 768 && <div className={s.pagination}>
                 {articlesData.map((item, index) =>
-                    <button key={index} className={s.dot} style={{opacity: index != currentIndex ? 0.4 : 1}}
-                            onClick={() => setCurrentIndex && setCurrentIndex(index)}></button>
+                    <button key={index} className={s.dotWrapper} style={{opacity: index != currentIndex ? 0.4 : 1}}
+                            onClick={() => setCurrentIndex && setCurrentIndex(index)}>
+                        <div className={s.dot}></div>
+                    </button>
                 )}
             </div>}
         </div>
